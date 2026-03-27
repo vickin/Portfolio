@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vignesh Nagarajan — Engineering Leader | Industry 4.0</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0c0f0a;--paper:#f5f0e8;--rust:#c4400f;--steel:#2e4057;--gold:#d4a017;--mist:#8a9baa;--cream:#ede8dc}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Syne',sans-serif;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(245,240,232,0.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,64,15,0.15)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--rust)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;color:var(--steel);transition:color 0.2s}
+.nav-links a:hover{color:var(--rust)}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{background:var(--steel);display:flex;flex-direction:column;justify-content:flex-end;padding:6rem 4rem 5rem;position:relative;clip-path:polygon(0 0,100% 0,92% 100%,0 100%)}
+.hero-left::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 28px,rgba(255,255,255,0.025) 28px,rgba(255,255,255,0.025) 29px)}
+.hero-label{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.2rem;opacity:0;animation:fadeUp 0.8s 0.2s forwards}
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(3rem,5vw,5.5rem);line-height:1;color:#f5f0e8;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s 0.4s forwards}
+.hero-title{font-size:0.85rem;font-weight:500;letter-spacing:0.05em;color:var(--mist);line-height:1.7;max-width:30ch;opacity:0;animation:fadeUp 0.8s 0.6s forwards}
+.hero-title span{color:var(--gold)}
+.hero-cta{display:inline-flex;align-items:center;gap:0.8rem;margin-top:2.5rem;padding:0.9rem 2rem;background:var(--rust);color:#fff;text-decoration:none;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.2s,transform 0.2s;opacity:0;animation:fadeUp 0.8s 0.8s forwards;width:fit-content}
+.hero-cta:hover{background:#a83409;transform:translateY(-2px)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:7rem 4rem 5rem 5rem}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;opacity:0;animation:fadeUp 0.9s 0.7s forwards}
+.stat-number{font-family:'DM Serif Display',serif;font-size:3.5rem;line-height:1;color:var(--rust)}
+.stat-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--mist);margin-top:0.4rem;line-height:1.4}
+.hero-summary{margin-top:3rem;font-size:0.88rem;line-height:1.85;color:#555;max-width:45ch;border-left:3px solid var(--rust);padding-left:1.2rem;opacity:0;animation:fadeUp 0.9s 0.9s forwards}
+.location-tag{margin-top:2rem;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--mist);opacity:0;animation:fadeUp 0.9s 1.1s forwards}
+.sec-hdr{display:flex;align-items:flex-start;gap:2rem;margin-bottom:4rem}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--rust);letter-spacing:0.1em;padding-top:0.4rem}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.1}
+.sec-sub{font-size:0.82rem;color:var(--mist);margin-top:0.6rem;line-height:1.6;max-width:55ch}
+
+/* === PYRAMID === */
+#pyramid{background:var(--ink);padding:7rem 4rem;position:relative;overflow:hidden}
+#pyramid::before{content:'ISA-95';position:absolute;right:-2rem;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'DM Serif Display',serif;font-size:8rem;color:rgba(255,255,255,0.03);white-space:nowrap;pointer-events:none}
+.pyr-wrap{display:flex;flex-direction:column;align-items:center;width:100%;max-width:780px;margin:0 auto}
+.pyr-cap{width:0;height:0;border-left:65px solid transparent;border-right:65px solid transparent;border-bottom:56px solid #2e4057;position:relative;filter:drop-shadow(0 4px 16px rgba(46,64,87,0.5))}
+.pyr-cap::after{content:'ISA 95';position:absolute;top:17px;left:50%;transform:translateX(-50%);font-family:'DM Serif Display',serif;font-size:0.55rem;color:white;letter-spacing:0.12em;white-space:nowrap}
+.pyr-conn{width:2px;height:10px;background:repeating-linear-gradient(to bottom,rgba(255,255,255,0.3) 0,rgba(255,255,255,0.3) 4px,transparent 4px,transparent 8px)}
+.pyr-layer{position:relative;width:100%;cursor:pointer;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),filter 0.25s;transform-origin:center bottom;user-select:none}
+.pyr-layer:hover{transform:scaleY(1.05);filter:brightness(1.12)}
+.pyr-layer.active{filter:brightness(1.18)}
+.pyr-inner{display:flex;align-items:stretch;width:100%}
+.pyr-lbl-l{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding-right:0.9rem;min-width:95px}
+.pyr-lbl-r{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-left:0.9rem;min-width:95px}
+.pyr-lvnum{font-family:'JetBrains Mono',monospace;font-size:0.63rem;letter-spacing:0.1em;white-space:nowrap}
+.pyr-lvtxt{font-size:0.58rem;color:rgba(255,255,255,0.45);text-align:right;margin-top:0.15rem;line-height:1.3}
+.pyr-bdg{font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:0.15rem 0.45rem;letter-spacing:0.05em;display:inline-block;margin-bottom:0.2rem;border:1px solid;border-radius:0}
+.pyr-cos{font-size:0.57rem;color:rgba(255,255,255,0.42);line-height:1.5}
+.pyr-trap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0.9rem 2rem;text-align:center;position:relative;overflow:hidden}
+.pyr-layer:nth-child(2) .pyr-trap{clip-path:polygon(9% 0%,91% 0%,100% 100%,0% 100%);background:#4caf72}
+.pyr-layer:nth-child(3) .pyr-trap{clip-path:polygon(7% 0%,93% 0%,100% 100%,0% 100%);background:#e07b28}
+.pyr-layer:nth-child(4) .pyr-trap{clip-path:polygon(5% 0%,95% 0%,100% 100%,0% 100%);background:#d63b3b}
+.pyr-layer:nth-child(5) .pyr-trap{clip-path:polygon(3% 0%,97% 0%,100% 100%,0% 100%);background:#b82b2b}
+.pyr-layer:nth-child(6) .pyr-trap{clip-path:polygon(1.5% 0%,98.5% 0%,100% 100%,0% 100%);background:#3b9bd4}
+.pyr-layer:nth-child(2) .pyr-lvnum{color:#4caf72}.pyr-layer:nth-child(2) .pyr-bdg{background:rgba(76,175,114,0.2);border-color:#4caf72;color:#4caf72}
+.pyr-layer:nth-child(3) .pyr-lvnum{color:#e07b28}.pyr-layer:nth-child(3) .pyr-bdg{background:rgba(224,123,40,0.2);border-color:#e07b28;color:#e07b28}
+.pyr-layer:nth-child(4) .pyr-lvnum{color:#d63b3b}.pyr-layer:nth-child(4) .pyr-bdg{background:rgba(214,59,59,0.2);border-color:#d63b3b;color:#d63b3b}
+.pyr-layer:nth-child(5) .pyr-lvnum{color:#b82b2b}.pyr-layer:nth-child(5) .pyr-bdg{background:rgba(184,43,43,0.2);border-color:#b82b2b;color:#b82b2b}
+.pyr-layer:nth-child(6) .pyr-lvnum{color:#3b9bd4}.pyr-layer:nth-child(6) .pyr-bdg{background:rgba(59,155,212,0.2);border-color:#3b9bd4;color:#3b9bd4}
+.pyr-trap-title{font-size:0.78rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:white;line-height:1.2}
+.pyr-trap-sub{font-size:0.61rem;color:rgba(255,255,255,0.72);margin-top:0.2rem;letter-spacing:0.04em}
+.pyr-layer.active .pyr-trap::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.1);animation:glowP 1.5s infinite}
+.pyr-sep{width:55%;height:14px;position:relative;margin:0 auto;display:flex;align-items:center;justify-content:center}
+.pyr-sep::before{content:attr(data-lbl);font-size:0.54rem;color:rgba(255,255,255,0.32);white-space:nowrap;letter-spacing:0.06em;font-style:italic;background:var(--ink);padding:0 0.5rem;position:relative;z-index:1}
+.pyr-sep::after{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:repeating-linear-gradient(to right,rgba(255,255,255,0.18) 0,rgba(255,255,255,0.18) 5px,transparent 5px,transparent 10px);transform:translateY(-50%)}
+.pyr-hint{text-align:center;margin-top:1.3rem;font-size:0.64rem;color:rgba(255,255,255,0.28);letter-spacing:0.1em;text-transform:uppercase;animation:breathe 2.5s infinite}
+.pyr-panel{width:100%;max-width:780px;margin:1.5rem auto 0;overflow:hidden;max-height:0;opacity:0;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1),opacity 0.4s ease}
+.pyr-panel.open{max-height:560px;opacity:1}
+.pyr-panel-inner{border-top:3px solid #4caf72;background:rgba(255,255,255,0.04);padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2rem}
+.pyr-ph{grid-column:1/-1;display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;flex-wrap:wrap}
+.pyr-pbdg{font-family:'JetBrains Mono',monospace;font-size:0.65rem;padding:0.25rem 0.75rem;color:white;letter-spacing:0.1em;background:#4caf72}
+.pyr-ptitle{font-family:'DM Serif Display',serif;font-size:1.2rem;color:white;flex:1}
+.pyr-pclose{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.35);font-size:1.3rem;cursor:pointer;padding:0.2rem;line-height:1;transition:color 0.2s}
+.pyr-pclose:hover{color:white}
+.pyr-col-title{font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#4caf72;margin-bottom:0.7rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+.pyr-items{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
+.pyr-items li{font-size:0.76rem;color:rgba(255,255,255,0.68);line-height:1.55;display:flex;gap:0.6rem}
+.pyr-items li::before{content:'▸';color:#4caf72;flex-shrink:0}
+.pyr-roles{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.2rem}
+.pyr-rchip{font-family:'JetBrains Mono',monospace;font-size:0.63rem;padding:0.28rem 0.7rem;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.5);letter-spacing:0.04em;transition:border-color 0.2s,color 0.2s;cursor:default}
+
+/* === EXPERIENCE === */
+#experience{padding:7rem 4rem;background:var(--cream)}
+.timeline{position:relative;margin-top:3rem;padding-left:3rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--rust),var(--steel),transparent)}
+.tl-item{position:relative;margin-bottom:3.5rem;padding-left:2rem}
+.tl-item::before{content:'';position:absolute;left:-3.42rem;top:0.6rem;width:12px;height:12px;border-radius:50%;background:var(--rust);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--rust)}
+.tl-meta{display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;flex-wrap:wrap}
+.tl-period{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--rust);letter-spacing:0.06em}
+.tl-loc{font-size:0.68rem;color:var(--mist);letter-spacing:0.05em;text-transform:uppercase;font-weight:600}
+.tl-co{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--steel);margin-bottom:0.2rem}
+.tl-role{font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem}
+.tl-ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.tl-ul li{font-size:0.82rem;color:#444;line-height:1.65;display:flex;gap:0.8rem}
+.tl-ul li::before{content:'→';color:var(--rust);flex-shrink:0;margin-top:0.05rem}
+.early-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:1rem}
+.early-card{background:white;border:1px solid #ddd;padding:1.2rem;transition:border-color 0.2s,transform 0.2s}
+.early-card:hover{border-color:var(--rust);transform:translateY(-3px)}
+.early-co{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--steel)}
+.early-role{font-size:0.72rem;color:var(--rust);margin:0.3rem 0}
+.early-lvl{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;padding:0.15rem 0.5rem;background:var(--steel);color:white;margin-bottom:0.5rem}
+.early-desc{font-size:0.75rem;color:#666;line-height:1.6}
+
+/* === SKILLS === */
+#skills{background:white;padding:7rem 4rem}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.skill-cluster{padding:2rem;border:1px solid #eee}
+.skill-cluster-title{font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:1.2rem;padding-bottom:0.7rem;border-bottom:2px solid var(--rust)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-tag{font-size:0.72rem;padding:0.35rem 0.8rem;background:var(--cream);color:var(--steel);font-weight:600;letter-spacing:0.03em;transition:background 0.2s,color 0.2s;cursor:default}
+.skill-tag:hover{background:var(--rust);color:white}
+.lang-sec{margin-top:3rem}
+.lang-sec-title{font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--mist);margin-bottom:1.5rem}
+.lang-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.lang-name{font-size:0.72rem;font-weight:700;color:var(--steel);margin-bottom:0.4rem}
+.lang-level{font-size:0.65rem;color:var(--mist);margin-bottom:0.5rem}
+.lang-track{height:3px;background:#eee}
+.lang-fill{height:100%;background:var(--rust)}
+
+/* === ROADMAP === */
+#future{background:var(--ink);padding:7rem 4rem;position:relative;overflow:hidden}
+#future::after{content:'';position:absolute;bottom:-5rem;right:-5rem;width:30rem;height:30rem;background:radial-gradient(circle,rgba(196,64,15,0.08) 0%,transparent 70%);pointer-events:none}
+.rm-axis{display:flex;justify-content:space-between;position:relative;margin-bottom:3rem}
+.rm-axis::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(to right,var(--rust),rgba(196,64,15,0.1));transform:translateY(-50%)}
+.rm-phase{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+.rdot{width:14px;height:14px;border-radius:50%;margin-bottom:0.8rem}
+.rdot.done{background:var(--rust)}
+.rdot.progress{background:var(--gold);box-shadow:0 0 0 4px rgba(212,160,23,0.2)}
+.rdot.future{background:rgba(255,255,255,0.15);border:2px dashed rgba(255,255,255,0.3)}
+.rphase-lbl{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--mist);letter-spacing:0.08em;text-align:center}
+.rm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rcard{padding:1.8rem;border:1px solid rgba(255,255,255,0.08);position:relative;transition:border-color 0.2s}
+.rcard:hover{border-color:rgba(196,64,15,0.5)}
+.rcard.now{border-color:rgba(196,64,15,0.35)}
+.rcard.next{border-color:rgba(212,160,23,0.2)}
+.rcard.fut{border-style:dashed;border-color:rgba(255,255,255,0.12)}
+.rcard::before{content:attr(data-phase);position:absolute;top:1rem;right:1rem;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;padding:0.2rem 0.5rem;color:var(--mist);background:rgba(255,255,255,0.05)}
+.rcard-icon{font-size:1.5rem;margin-bottom:1rem}
+.rcard-title{font-family:'DM Serif Display',serif;font-size:1.15rem;color:white;margin-bottom:0.8rem;line-height:1.2}
+.rcard-desc{font-size:0.77rem;color:var(--mist);line-height:1.7}
+.rcard-items{margin-top:1rem;list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.rcard-items li{font-size:0.73rem;color:#9aabb7;display:flex;gap:0.6rem}
+.rcard-items li::before{content:'·';color:var(--rust);flex-shrink:0}
+
+/* === EDUCATION === */
+#education{background:var(--cream);padding:7rem 4rem}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:3rem}
+.edu-card{background:white;padding:2.5rem;border-bottom:4px solid var(--rust);transition:transform 0.2s}
+.edu-card:hover{transform:translateY(-4px)}
+.edu-deg{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--steel);margin-bottom:0.4rem}
+.edu-uni{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--rust)}
+.edu-yr{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--mist);margin:0.5rem 0 1rem}
+.edu-hl{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.edu-hl li{font-size:0.78rem;color:#555;line-height:1.6;display:flex;gap:0.7rem}
+.edu-hl li::before{content:'★';color:var(--gold);flex-shrink:0}
+
+/* === FOOTER === */
+footer{background:var(--ink);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-name{font-family:'DM Serif Display',serif;font-size:1.2rem;color:white}
+.footer-sub{font-size:0.72rem;color:var(--mist);margin-top:0.3rem}
+.footer-contact{display:flex;flex-direction:column;gap:0.4rem;text-align:right}
+.footer-contact a{font-size:0.75rem;color:var(--mist);text-decoration:none;letter-spacing:0.05em}
+.footer-contact a:hover{color:var(--rust)}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes glowP{0%,100%{opacity:0}50%{opacity:1}}
+@keyframes breathe{0%,100%{opacity:0.28}50%{opacity:0.65}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}.nav-links{gap:1.2rem}
+  #hero{grid-template-columns:1fr}.hero-left{clip-path:none;padding:8rem 2rem 4rem;min-height:60vh}
+  .hero-right{padding:3rem 2rem}.stat-grid{grid-template-columns:1fr 1fr}
+  #pyramid,#experience,#skills,#future,#education{padding:5rem 1.5rem}
+  .pyr-lbl-l,.pyr-lbl-r{min-width:65px}.pyr-lvtxt,.pyr-cos{display:none}
+  .pyr-panel-inner{grid-template-columns:1fr}
+  .skills-grid,.rm-cards,.edu-grid,.early-grid{grid-template-columns:1fr}
+  .lang-bars{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:1.5rem;text-align:center}.footer-contact{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Vignesh Nagarajan</div>
+  <ul class="nav-links">
+    <li><a href="#pyramid">ISA-95</a></li>
+    <li><a href="#experience">Journey</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#future">Roadmap</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-label">Engineering Leader · Industry 4.0 · IoT</div>
+    <h1 class="hero-name">Vignesh<br>Nagarajan</h1>
+    <p class="hero-title">Globally experienced leader shaping<br><span>smart factories</span> across Europe &amp; APAC —<br>bridging OT and IT for the digital age.</p>
+    <a href="#pyramid" class="hero-cta">Explore My Journey ↓</a>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div><div class="stat-number">10+</div><div class="stat-label">Years of<br>Industry Impact</div></div>
+      <div><div class="stat-number">100+</div><div class="stat-label">Factory Sites<br>Transformed</div></div>
+      <div><div class="stat-number">5</div><div class="stat-label">Countries<br>Lived &amp; Worked</div></div>
+      <div><div class="stat-number">L0→L4</div><div class="stat-label">Full ISA-95<br>Pyramid Mastery</div></div>
+    </div>
+    <p class="hero-summary">From commissioning PLC systems on the shop floor to architecting enterprise-wide IoT platforms — my career spans every layer of the industrial automation stack, grounded in real-world delivery across 5+ countries.</p>
+    <div class="location-tag">📍 Chennai, India — Open to relocation to Europe</div>
+  </div>
+</section>
+
+<section id="pyramid">
+  <div class="sec-hdr reveal">
+    <div class="sec-num">01</div>
+    <div>
+      <h2 class="sec-title" style="color:white">My ISA-95<br>Automation Journey</h2>
+      <p class="sec-sub">Every level of the industrial automation pyramid — hands-on, not theoretical. Click any layer to explore.</p>
+    </div>
+  </div>
+
+  <div class="pyr-wrap reveal">
+    <div class="pyr-cap"></div>
+    <div class="pyr-conn"></div>
+
+    <div class="pyr-layer" data-level="4" onclick="toggleLevel(this)">
+      <div class="pyr-inner">
+        <div class="pyr-lbl-l"><span class="pyr-lvnum">LEVEL 4</span><span class="pyr-lvtxt">Enterprise<br>/ ERP</span></div>
+        <div class="pyr-trap"><div class="pyr-trap-title">ERP, APO, Logistics</div><div class="pyr-trap-sub">Business Planning &amp; Scheduling</div></div>
+        <div class="pyr-lbl-r"><span class="pyr-bdg">Current Focus</span><span class="pyr-cos">Magna APAC<br>Magna Europe<br>Amazon</span></div>
+      </div>
+    </div>
+    <div class="pyr-sep" data-lbl="Business Process Information Network"></div>
+
+    <div class="pyr-layer" data-level="3" onclick="toggleLevel(this)">
+      <div class="pyr-inner">
+        <div class="pyr-lbl-l"><span class="pyr-lvnum">LEVEL 3</span><span class="pyr-lvtxt">MES /<br>Operations</span></div>
+        <div class="pyr-trap"><div class="pyr-trap-title">MES, LIMS, WMS, CMMS, QMS</div><div class="pyr-trap-sub">Manufacturing Operations Management</div></div>
+        <div class="pyr-lbl-r"><span class="pyr-bdg">Deep Exp.</span><span class="pyr-cos">Autoware Srl<br>Whirlpool</span></div>
+      </div>
+    </div>
+    <div class="pyr-sep" data-lbl="Operations Information Network"></div>
+
+    <div class="pyr-layer" data-level="2" onclick="toggleLevel(this)">
+      <div class="pyr-inner">
+        <div class="pyr-lbl-l"><span class="pyr-lvnum">LEVEL 2</span><span class="pyr-lvtxt">SCADA /<br>HMI</span></div>
+        <div class="pyr-trap"><div class="pyr-trap-title">HMI, SCADA, Batch Systems</div><div class="pyr-trap-sub">Supervisory &amp; Process Control</div></div>
+        <div class="pyr-lbl-r"><span class="pyr-bdg">Proficient</span><span class="pyr-cos">Whirlpool<br>P&amp;C Automation</span></div>
+      </div>
+    </div>
+    <div class="pyr-sep" data-lbl="Automation Networks"></div>
+
+    <div class="pyr-layer" data-level="1" onclick="toggleLevel(this)">
+      <div class="pyr-inner">
+        <div class="pyr-lbl-l"><span class="pyr-lvnum">LEVEL 1</span><span class="pyr-lvtxt">PLC /<br>DCS</span></div>
+        <div class="pyr-trap"><div class="pyr-trap-title">PLC, DCS, Packaged Systems</div><div class="pyr-trap-sub">Basic Process Control</div></div>
+        <div class="pyr-lbl-r"><span class="pyr-bdg">Foundational</span><span class="pyr-cos">P&amp;C Automation<br>Cannon Automata</span></div>
+      </div>
+    </div>
+    <div class="pyr-sep" data-lbl="Discrete &amp; Process Device Communication Networks"></div>
+
+    <div class="pyr-layer" data-level="0" onclick="toggleLevel(this)">
+      <div class="pyr-inner">
+        <div class="pyr-lbl-l"><span class="pyr-lvnum">LEVEL 0</span><span class="pyr-lvtxt">Field /<br>Sensors</span></div>
+        <div class="pyr-trap"><div class="pyr-trap-title">I/O Link, DeviceNet, Sensors</div><div class="pyr-trap-sub">Physical Process &amp; Motion Control</div></div>
+        <div class="pyr-lbl-r"><span class="pyr-bdg">Foundational</span><span class="pyr-cos">Cannon Automata<br>Italy</span></div>
+      </div>
+    </div>
+
+    <p class="pyr-hint">↑ Click any layer to explore my experience at that level</p>
+
+    <div class="pyr-panel" id="pyrPanel">
+      <div class="pyr-panel-inner" id="pyrInner">
+        <div class="pyr-ph">
+          <span class="pyr-pbdg" id="pdBadge">LEVEL 4 · Enterprise</span>
+          <span class="pyr-ptitle" id="pdTitle">Enterprise IoT &amp; Smart Factory Strategy</span>
+          <button class="pyr-pclose" onclick="closePanel()">✕</button>
+        </div>
+        <div>
+          <div class="pyr-col-title" id="pdWhatTitle">What I Did</div>
+          <ul class="pyr-items" id="pdWhat"></ul>
+        </div>
+        <div>
+          <div class="pyr-col-title" id="pdTechTitle">Technologies &amp; Methods</div>
+          <ul class="pyr-items" id="pdTech"></ul>
+        </div>
+        <div class="pyr-roles" id="pdRoles"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-hdr reveal">
+    <div class="sec-num" style="color:var(--rust)">02</div>
+    <div>
+      <h2 class="sec-title" style="color:var(--steel)">A Decade of<br>Delivery</h2>
+      <p class="sec-sub" style="color:#777">From Italy's factory floors to APAC's digital transformation centres.</p>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-meta"><span class="tl-period">Mar 2024 — Present</span><span class="tl-loc">📍 Bengaluru, India</span></div>
+      <div class="tl-co">Magna International</div>
+      <div class="tl-role">IoT &amp; Smart Factory Solutions Manager — APAC Region</div>
+      <ul class="tl-ul">
+        <li>Established and scaled India Center of Excellence for smart factory, boosting development velocity by 60%.</li>
+        <li>Leading digital transformation for APAC factories with live production visibility using IoT and AI.</li>
+        <li>Ownership of 8-member agile tech team: DevOps, data scientists, full-stack engineers.</li>
+        <li>Enhanced data observability frameworks across global factories enabling data-driven decisions at every level.</li>
+        <li>Deploying real-time frontline dashboards targeting 200+ divisions by end of 2025.</li>
+        <li>Championed shop floor connectivity for higher OEE visibility and optimization.</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-meta"><span class="tl-period">Mar 2023 — Feb 2024</span><span class="tl-loc">📍 Munich, Germany</span></div>
+      <div class="tl-co">Magna International</div>
+      <div class="tl-role">Regional Industry 4.0 Lead — Europe</div>
+      <ul class="tl-ul">
+        <li>Led Industry 4.0 use cases across Magna Body &amp; Chassis divisions in Europe and UK.</li>
+        <li>Initiated "Data First" workshop series across 19 divisions — aligned operations to strategic KPIs.</li>
+        <li>Scaled IoT solutions to 85% of European plants in under 9 months.</li>
+        <li>Standardized factory data models using MQTT and UNS for scalability and security.</li>
+        <li>Standardized data ingestion across 14 European plants with ISO 27001 cybersecurity compliance.</li>
+        <li>Delivered KPI-driven dashboards and smart monitoring rooms fostering continuous improvement culture.</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-meta"><span class="tl-period">Sep 2021 — Feb 2023</span><span class="tl-loc">📍 Berlin, Germany · Turin, Italy</span></div>
+      <div class="tl-co">Amazon</div>
+      <div class="tl-role">Systems Development Engineer II · Automation Engineer / SME Control Systems</div>
+      <ul class="tl-ul">
+        <li>Deployed robotics and automation technologies from prototype to operational scale across 5 European sites.</li>
+        <li>Achieved 40% cost savings and 20% faster tech deployment via modular integration strategies.</li>
+        <li>Implemented globally scaled QR-coded labels — improved sortation speed and reduced misreads.</li>
+        <li>Delivered €800,000+ in infrastructure build-out savings; restored performance to design rate for peak seasons.</li>
+        <li>Resolved L3/L4 robotics floor bottlenecking at TRN1, improving labor efficiency and plant performance.</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-meta"><span class="tl-period">2013 — 2021 · Early Career</span><span class="tl-loc">📍 Italy &amp; India</span></div>
+      <div class="tl-co">Early Career Roles</div>
+      <div class="tl-role">ISA-95 Exposure Across All Levels 0–4</div>
+      <div class="early-grid">
+        <div class="early-card"><div class="early-co">Autoware Srl</div><div class="early-role">MES Engineer</div><span class="early-lvl">Level 3–4</span><p class="early-desc">Wonderware/InTouch MES, OEE tracking, AR-based predictive maintenance in discrete manufacturing.</p></div>
+        <div class="early-card"><div class="early-co">P&amp;C Automation</div><div class="early-role">Automation Engineer</div><span class="early-lvl">Level 1–2</span><p class="early-desc">PLC-based control systems for cable manufacturing — logic efficiency and hardware-software integration.</p></div>
+        <div class="early-card"><div class="early-co">Whirlpool Corp</div><div class="early-role">Industry 4.0 Lead</div><span class="early-lvl">Level 2–4</span><p class="early-desc">Lean + Industry 4.0 pilots across European plants; collaborative robots; digital manufacturing frameworks.</p></div>
+        <div class="early-card"><div class="early-co">Cannon Automata</div><div class="early-role">Motion Control Engineer</div><span class="early-lvl">Level 0–1</span><p class="early-desc">Cartesian robot motion control, CNC integration algorithms, robotic dynamics for precision applications.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-hdr reveal">
+    <div class="sec-num" style="color:var(--rust)">03</div>
+    <div><h2 class="sec-title" style="color:var(--steel)">Skills &amp;<br>Expertise</h2></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-cluster reveal"><div class="skill-cluster-title">Digital Transformation &amp; Strategy</div><div class="skill-tags"><span class="skill-tag">Industry 4.0</span><span class="skill-tag">Smart Manufacturing</span><span class="skill-tag">IoT Platforms</span><span class="skill-tag">Digital Strategy</span><span class="skill-tag">Data Observability</span><span class="skill-tag">OEE Optimization</span><span class="skill-tag">PoC to Scale</span></div></div>
+    <div class="skill-cluster reveal"><div class="skill-cluster-title">OT / Industrial Tech</div><div class="skill-tags"><span class="skill-tag">PLC Systems</span><span class="skill-tag">MES / SCADA</span><span class="skill-tag">MQTT</span><span class="skill-tag">UNS</span><span class="skill-tag">Motion Control</span><span class="skill-tag">IT/OT Integration</span><span class="skill-tag">Robotics</span></div></div>
+    <div class="skill-cluster reveal"><div class="skill-cluster-title">Leadership &amp; Management</div><div class="skill-tags"><span class="skill-tag">Team Building</span><span class="skill-tag">Agile Delivery</span><span class="skill-tag">Cross-functional Teams</span><span class="skill-tag">Tech Management</span><span class="skill-tag">Ops Excellence</span><span class="skill-tag">Change Management</span></div></div>
+    <div class="skill-cluster reveal"><div class="skill-cluster-title">Data &amp; Analytics</div><div class="skill-tags"><span class="skill-tag">Data Pipelines</span><span class="skill-tag">Real-time Dashboards</span><span class="skill-tag">KPI Frameworks</span><span class="skill-tag">Frontline Analytics</span><span class="skill-tag">Supply Chain Data</span></div></div>
+    <div class="skill-cluster reveal"><div class="skill-cluster-title">Compliance &amp; Standards</div><div class="skill-tags"><span class="skill-tag">ISO 27001</span><span class="skill-tag">ISA-95</span><span class="skill-tag">Cybersecurity</span><span class="skill-tag">Data Integrity</span><span class="skill-tag">Process Standardization</span></div></div>
+    <div class="skill-cluster reveal"><div class="skill-cluster-title">Emerging Technologies</div><div class="skill-tags"><span class="skill-tag">AI / ML Integration</span><span class="skill-tag">Predictive Maintenance</span><span class="skill-tag">AR in Manufacturing</span><span class="skill-tag">Edge Computing</span><span class="skill-tag">Sustainable Tech</span></div></div>
+  </div>
+  <div class="lang-sec reveal">
+    <div class="lang-sec-title">Languages</div>
+    <div class="lang-bars">
+      <div><div class="lang-name">Tamil</div><div class="lang-level">Mother Tongue</div><div class="lang-track"><div class="lang-fill" style="width:100%"></div></div></div>
+      <div><div class="lang-name">English</div><div class="lang-level">Business Fluent</div><div class="lang-track"><div class="lang-fill" style="width:95%"></div></div></div>
+      <div><div class="lang-name">Italian</div><div class="lang-level">Business Fluent</div><div class="lang-track"><div class="lang-fill" style="width:90%"></div></div></div>
+      <div><div class="lang-name">Hindi</div><div class="lang-level">Business Fluent</div><div class="lang-track"><div class="lang-fill" style="width:85%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="future">
+  <div class="sec-hdr reveal">
+    <div class="sec-num">04</div>
+    <div>
+      <h2 class="sec-title" style="color:white">Future<br>Roadmap</h2>
+      <p class="sec-sub">Building domain-depth in Digital Transformation — the next chapter.</p>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="rm-axis">
+      <div class="rm-phase"><div class="rdot done"></div><div class="rphase-lbl">Now</div></div>
+      <div class="rm-phase"><div class="rdot progress"></div><div class="rphase-lbl">Near-term</div></div>
+      <div class="rm-phase"><div class="rdot future"></div><div class="rphase-lbl">2026–2027</div></div>
+    </div>
+    <div class="rm-cards">
+      <div class="rcard now" data-phase="NOW"><div class="rcard-icon">🏭</div><div class="rcard-title">Deepening Smart Factory Architecture</div><p class="rcard-desc">Cementing expertise in end-to-end IIoT architecture with focus on scalable data platforms and frontline empowerment tools.</p><ul class="rcard-items"><li>Unified Namespace (UNS) at enterprise scale</li><li>AI-driven OEE and anomaly detection</li><li>200+ division rollout at Magna APAC</li><li>Cybersecurity-first OT/IT integration</li></ul></div>
+      <div class="rcard next" data-phase="NEAR-TERM"><div class="rcard-icon">🧠</div><div class="rcard-title">Domain Certifications &amp; Thought Leadership</div><p class="rcard-desc">Building formal credentials to complement deep operational experience — positioning for advisory and principal-level roles.</p><ul class="rcard-items"><li>ISA CSSA / GICSP cybersecurity credentials</li><li>Cloud architect cert (Azure / AWS Industrial IoT)</li><li>Speaking at Industry 4.0 conferences</li><li>Publishing smart factory adoption frameworks</li></ul></div>
+      <div class="rcard fut" data-phase="2026–2027"><div class="rcard-icon">🌐</div><div class="rcard-title">Principal-Level DX Advisory</div><p class="rcard-desc">Evolving into a globally recognised authority on industrial digital transformation — shaping C-suite strategy across industries.</p><ul class="rcard-items"><li>VP / Global DX Lead at multinational</li><li>Build a replicable DX framework (open source)</li><li>Cross-industry: Automotive, FMCG, Pharma 4.0</li><li>Sustainable manufacturing as DX north star</li></ul></div>
+      <div class="rcard now" data-phase="ONGOING"><div class="rcard-icon">⚡</div><div class="rcard-title">AI + Manufacturing Convergence</div><p class="rcard-desc">Integrating AI deeply into operational workflows — moving beyond dashboards to predictive and autonomous operations.</p><ul class="rcard-items"><li>AI-powered quality defect detection</li><li>Predictive maintenance at edge</li><li>LLM-assisted frontline decision tools</li><li>Digital twin adoption strategy</li></ul></div>
+      <div class="rcard next" data-phase="NEAR-TERM"><div class="rcard-icon">🔒</div><div class="rcard-title">OT Cybersecurity Specialization</div><p class="rcard-desc">As OT and IT converge, building domain depth in industrial security architecture becomes mission-critical.</p><ul class="rcard-items"><li>IEC 62443 standard deep-dive</li><li>Secure by design OT infrastructure</li><li>Network segmentation in brownfield sites</li><li>Security governance for factory networks</li></ul></div>
+      <div class="rcard fut" data-phase="VISION"><div class="rcard-icon">🌱</div><div class="rcard-title">Sustainable &amp; Circular Manufacturing</div><p class="rcard-desc">Marrying digital transformation with sustainability — using data and automation to drive carbon reduction outcomes.</p><ul class="rcard-items"><li>Energy intelligence platforms for factories</li><li>Scope 3 emissions tracking via IoT</li><li>Circular supply chain data architectures</li><li>Green KPIs embedded in smart factory DNA</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="sec-hdr reveal">
+    <div class="sec-num" style="color:var(--rust)">05</div>
+    <div><h2 class="sec-title" style="color:var(--steel)">Education</h2></div>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-deg">MS in Automation &amp; Control Engineering</div>
+      <div class="edu-uni">Politecnico di Milano · Milan, Italy</div>
+      <div class="edu-yr">// Graduated December 2016 · 2 Years</div>
+      <ul class="edu-hl">
+        <li>Awarded full scholarship by the Italian government based on academic excellence.</li>
+        <li>Winner of Research Grant from CNR (Consiglio Nazionale delle Ricerche) for Industry 4.0 research in manufacturing.</li>
+      </ul>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-deg">BE in Electronics &amp; Instrumentation Engineering</div>
+      <div class="edu-uni">Anna University · Chennai, India</div>
+      <div class="edu-yr">// Graduated May 2013 · 4 Years</div>
+      <ul class="edu-hl">
+        <li>Organised and led multiple inter-college technical events and symposiums.</li>
+        <li>Founded the university robotics club — creating an ecosystem for ideas exchange and competitive robotics.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-name">Vignesh Nagarajan</div>
+    <div class="footer-sub">Engineering Leader · Industry 4.0 · IoT · Digital Transformation</div>
+  </div>
+  <div class="footer-contact">
+    <a href="mailto:nvignesh20@gmail.com">nvignesh20@gmail.com</a>
+    <a href="tel:+919176191972">+91 917 619 1972</a>
+    <a>Open to relocation — Europe preferred</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry, i) {
+    if (entry.isIntersecting) {
+      setTimeout(function() { entry.target.classList.add('visible'); }, i * 80);
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Pyramid data
+var LD = {
+  4: { color:'#4caf72', badge:'LEVEL 4 · Enterprise / ERP', title:'Enterprise IoT, Smart Factory Strategy & Business ROI',
+    what:['Established India CoE for smart factory — dev velocity up 60% at Magna APAC','Led digital transformation for APAC factories with live IoT & AI production visibility','Initiated "Data First" workshop series across 19 European divisions','Scaled IoT solutions to 85% of European plants in under 9 months','Targeting 200+ frontline dashboard deployments across Magna by 2025','Deployed robotics from prototype to scale across 5 Amazon EU sites'],
+    tech:['IoT Platform Architecture','Data Observability Frameworks','ISO 27001 Compliance','DevOps · Agile Delivery','Business ROI & KPI Governance','Industry 4.0 Use Case Blueprinting'],
+    roles:['Magna APAC — IoT & Smart Factory Manager','Magna Europe — Regional I4.0 Lead','Amazon — Systems Development Engineer II']
+  },
+  3: { color:'#e07b28', badge:'LEVEL 3 · MES / Operations', title:'MES Development, OEE & Operations Intelligence',
+    what:['Developed MES applications using Wonderware/InTouch for production monitoring','Built OEE tracking systems across discrete manufacturing environments','Implemented AR-based predictive maintenance solutions','Standardized factory data models with MQTT and UNS across 14 European plants','Delivered KPI-driven smart monitoring rooms at Magna Europe','Led Lean + Industry 4.0 pilots across Whirlpool European plants'],
+    tech:['Wonderware / InTouch MES','MQTT · Unified Namespace (UNS)','OEE Tracking & Analytics','AR-based Predictive Maintenance','Lean Manufacturing','Data Standardization & Integrity'],
+    roles:['Autoware Srl — MES Engineer','Whirlpool Corp — Industry 4.0 Lead']
+  },
+  2: { color:'#d63b3b', badge:'LEVEL 2 · SCADA / HMI', title:'SCADA, HMI & Supervisory Control Systems',
+    what:['Designed and deployed real-time dashboards for frontline operators','Built smart monitoring rooms promoting continuous improvement culture','Implemented process visualization for cable manufacturing operations','Planned IT/OT infrastructure integration across production divisions','Enabled shop floor connectivity for higher OEE visibility','Championed collaborative robot integration at supervisory layer'],
+    tech:['SCADA Systems','HMI Design & Implementation','Real-time Data Dashboards','IT/OT Network Architecture','Shop Floor Connectivity','Process Visualization'],
+    roles:['Whirlpool Corp — I4.0 Lead (Level 2–4)','P&C Automation Italy — Automation Engineer']
+  },
+  1: { color:'#b82b2b', badge:'LEVEL 1 · PLC / DCS', title:'PLC Control Systems, Logic Design & Commissioning',
+    what:['Designed and commissioned PLC-based control systems for cable manufacturing','Focused on logic efficiency and hardware-software integration','Implemented machine-level automation for industrial processes','Developed low-level CNC integration algorithms','Ensured reliable control loops for precision industrial environments','Improved sortation systems with QR-coded label automation at Amazon'],
+    tech:['PLC Programming (Ladder, FBD)','DCS Integration','Hardware-Software Integration','Machine-level Automation','CNC Control Interfaces','Control Logic Optimization'],
+    roles:['P&C Automation Italy — Automation Engineer','Cannon Automata Italy — Motion Control Engineer']
+  },
+  0: { color:'#3b9bd4', badge:'LEVEL 0 · Field / Sensors', title:'Motion Control, Robotics & Field Device Engineering',
+    what:['Engineered motion control systems for Cartesian robots','Developed robotic dynamics algorithms for precision applications','Mastered low-level CNC integration at the field device layer','Applied kinematic models for accurate robot positioning','Bridged physical process and control layers in manufacturing lines','Foundation of every automation layer built above'],
+    tech:['Cartesian Robot Motion Control','CNC Integration Algorithms','Robotic Kinematics & Dynamics','Servo & Actuator Systems','Field Device Communication','Precision Engineering'],
+    roles:['Cannon Automata Italy — Motion Control Engineer','Cognizant — Programmer Analyst Trainee']
+  }
+};
+
+var activeLevel = null;
+
+function toggleLevel(el) {
+  var level = parseInt(el.dataset.level);
+  var panel = document.getElementById('pyrPanel');
+  var inner = document.getElementById('pyrInner');
+  document.querySelectorAll('.pyr-layer').forEach(function(l) { l.classList.remove('active'); });
+  if (activeLevel === level) { panel.classList.remove('open'); activeLevel = null; return; }
+  activeLevel = level;
+  el.classList.add('active');
+  var d = LD[level];
+  inner.style.borderTopColor = d.color;
+  document.querySelectorAll('.pyr-col-title').forEach(function(t) { t.style.color = d.color; });
+  var bdg = document.getElementById('pdBadge');
+  bdg.style.background = d.color; bdg.textContent = d.badge;
+  document.getElementById('pdTitle').textContent = d.title;
+  document.getElementById('pdWhat').innerHTML = d.what.map(function(t){return '<li>'+t+'</li>';}).join('');
+  document.getElementById('pdTech').innerHTML = d.tech.map(function(t){return '<li>'+t+'</li>';}).join('');
+  document.getElementById('pdRoles').innerHTML = d.roles.map(function(r){return '<span class="pyr-rchip">'+r+'</span>';}).join('');
+  var s = document.getElementById('dynStyle');
+  if (!s) { s = document.createElement('style'); s.id = 'dynStyle'; document.head.appendChild(s); }
+  s.textContent = '.pyr-items li::before{color:'+d.color+' !important}.pyr-rchip:hover{border-color:'+d.color+' !important;color:white !important}';
+  panel.classList.add('open');
+  setTimeout(function(){ panel.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 120);
+}
+
+function closePanel() {
+  document.getElementById('pyrPanel').classList.remove('open');
+  document.querySelectorAll('.pyr-layer').forEach(function(l){ l.classList.remove('active'); });
+  activeLevel = null;
+}
+</script>
+</body>
+</html>
