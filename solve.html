@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solve — Vignesh Nagarajan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0a0f1e;--navy2:#111827;--navy3:#1a2235;
+  --amber:#d4843e;--amber2:#f0a455;
+  --steel:#8892a4;--light:#e8ecf2;--white:#f5f7fa;
+  --border:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--light);font-family:'Inter','Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.2}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-weight:800;font-size:1rem;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--amber)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--steel);font-size:0.75rem;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--amber2)}
+.page-body{padding-top:56px}
+.section-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:0.4rem}
+.section-title{font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;letter-spacing:-0.01em}
+.section-sub{color:var(--steel);font-weight:300;font-size:0.88rem;max-width:520px;margin-bottom:1.75rem}
+.divider{height:1px;background:var(--border)}
+footer{background:var(--navy);border-top:1px solid var(--border);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.footer-name{font-size:0.82rem;color:var(--steel)}
+.footer-name strong{color:var(--white)}
+.footer-loc{font-size:0.72rem;color:var(--steel)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.solve-wrap{max-width:720px;padding:3rem 3rem}
+.solver-box{background:var(--navy3);border:1px solid var(--border);padding:1.75rem;position:relative;margin-top:1.5rem}
+.solver-box::before{content:'PROBLEM SOLVER';position:absolute;top:-9px;left:1.5rem;background:var(--navy3);padding:0 0.5rem;font-size:0.6rem;letter-spacing:0.15em;color:var(--amber);font-weight:600}
+.solver-intro{font-size:0.88rem;color:var(--steel);font-weight:300;line-height:1.7;margin-bottom:1.25rem}
+.solver-box textarea{width:100%;background:var(--navy2);border:1px solid rgba(255,255,255,0.1);color:var(--light);font-family:inherit;font-size:0.85rem;padding:0.8rem;resize:none;height:140px;outline:none;transition:border-color 0.2s}
+.solver-box textarea:focus{border-color:rgba(212,132,62,0.4)}
+.solver-box textarea::placeholder{color:rgba(136,146,164,0.45)}
+.solver-row{display:flex;gap:0.6rem;margin-top:0.6rem;align-items:center;flex-wrap:wrap}
+.email-input{background:var(--navy2);border:1px solid rgba(255,255,255,0.1);color:var(--light);font-family:inherit;font-size:0.84rem;padding:0.6rem 0.8rem;outline:none;width:210px}
+.solver-submit{background:var(--amber);color:var(--navy);font-weight:700;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.6rem 1.25rem;border:none;cursor:pointer}
+.solver-note{font-size:0.7rem;color:var(--steel);font-style:italic;flex:1;min-width:100px}
+.what-i-do{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;margin-top:1.75rem}
+.do-card{background:var(--navy3);border:1px solid var(--border);padding:0.9rem 1rem;border-left:2px solid var(--amber)}
+.do-card h4{font-size:0.8rem;font-weight:700;color:var(--white);margin-bottom:0.25rem}
+.do-card p{font-size:0.75rem;color:var(--steel);line-height:1.5}
+</style>
+</head>
+<body>
+<nav><a class="nav-logo" href="index.html">VN<span>.</span></a><ul class="nav-links"><li><a href="index.html" class="">Home</a></li><li><a href="about.html" class="">About</a></li><li><a href="solve.html" class="active">Solve</a></li><li><a href="connect.html" class="">Connect</a></li></ul></nav>
+<div class="page-body">
+
+<div class="solve-wrap">
+  <p class="section-label">Bring me your hard problems</p>
+  <h1 class="section-title">Describe the challenge</h1>
+  <p class="section-sub">If you're wrestling with a factory connectivity problem, OT/IT integration, scaling IoT across sites, or MES complexity — tell me what you're up against. I read every submission personally.</p>
+
+  <div class="what-i-do">
+    <div class="do-card"><h4>Factory Connectivity</h4><p>OPC-UA, MQTT, UNS, edge-to-cloud pipelines</p></div>
+    <div class="do-card"><h4>MES &amp; SCADA</h4><p>System selection, integration, ISA-95 alignment</p></div>
+    <div class="do-card"><h4>IoT at Scale</h4><p>Multi-site rollouts, standardisation, governance</p></div>
+    <div class="do-card"><h4>OT Cybersecurity</h4><p>Network segmentation, ISO 27001, OT risk</p></div>
+    <div class="do-card"><h4>Digital Transformation</h4><p>Strategy, roadmaps, change management</p></div>
+    <div class="do-card"><h4>OEE &amp; Analytics</h4><p>Real-time dashboards, loss analysis, AI/ML</p></div>
+  </div>
+
+  <div class="solver-box">
+    <p class="solver-intro">If it's a problem I find genuinely interesting — and most are — I'll reply with a perspective within a few days. No consulting pitch, no sales follow-up. Just a real conversation.</p>
+    <textarea id="problem-input" placeholder="e.g. We have 40 plants across 8 countries with no standardised data model. Every site runs its own SCADA and historian. We want real-time OEE visibility globally but don't know where to start..."></textarea>
+    <div class="solver-row">
+      <input id="email-input" type="email" class="email-input" placeholder="Your email">
+      <button class="solver-submit" onclick="submitProblem()">Send it →</button>
+      <span class="solver-note">No spam. Just a real conversation.</span>
+    </div>
+    <p id="solver-msg" style="margin-top:0.75rem;font-size:0.82rem;color:var(--amber2);display:none">Got it — I'll be in touch. Thank you.</p>
+  </div>
+</div>
+<script>
+function submitProblem(){
+  var p=document.getElementById("problem-input").value.trim();
+  var e=document.getElementById("email-input").value.trim();
+  if(!p||!e){alert("Please fill in both fields.");return;}
+  document.getElementById("solver-msg").style.display="block";
+  document.getElementById("problem-input").value="";
+  document.getElementById("email-input").value="";
+}
+</script>
+
+<footer><div class="footer-name"><strong>Vignesh Nagarajan</strong> · Engineering Leader</div><div class="footer-loc">Chennai, India · Open to Europe</div></footer>
+</div>
+</body>
+</html>

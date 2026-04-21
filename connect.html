@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect — Vignesh Nagarajan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0a0f1e;--navy2:#111827;--navy3:#1a2235;
+  --amber:#d4843e;--amber2:#f0a455;
+  --steel:#8892a4;--light:#e8ecf2;--white:#f5f7fa;
+  --border:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--light);font-family:'Inter','Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Inter','Segoe UI',system-ui,sans-serif;line-height:1.2}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-weight:800;font-size:1rem;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--amber)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--steel);font-size:0.75rem;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--amber2)}
+.page-body{padding-top:56px}
+.section-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:0.4rem}
+.section-title{font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;letter-spacing:-0.01em}
+.section-sub{color:var(--steel);font-weight:300;font-size:0.88rem;max-width:520px;margin-bottom:1.75rem}
+.divider{height:1px;background:var(--border)}
+footer{background:var(--navy);border-top:1px solid var(--border);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.footer-name{font-size:0.82rem;color:var(--steel)}
+.footer-name strong{color:var(--white)}
+.footer-loc{font-size:0.72rem;color:var(--steel)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.connect-wrap{padding:3rem}
+.connect-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:900px;margin-top:1.5rem}
+.connect-card{background:var(--navy3);border:1px solid var(--border);padding:1.5rem;cursor:pointer;text-decoration:none;transition:border-color 0.2s,transform 0.15s;display:block}
+.connect-card:hover{border-color:var(--amber);transform:translateY(-2px)}
+.connect-icon{font-size:1.4rem;margin-bottom:0.6rem}
+.connect-card h3{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:0.3rem}
+.connect-card p{font-size:0.78rem;color:var(--steel);line-height:1.5}
+.connect-note{margin-top:2.5rem;max-width:500px;background:var(--navy3);border:1px solid var(--border);border-left:3px solid var(--amber);padding:1.1rem 1.25rem}
+.connect-note p{font-size:0.85rem;color:var(--steel);font-weight:300;line-height:1.7}
+.connect-note strong{color:var(--white)}
+</style>
+</head>
+<body>
+<nav><a class="nav-logo" href="index.html">VN<span>.</span></a><ul class="nav-links"><li><a href="index.html" class="">Home</a></li><li><a href="about.html" class="">About</a></li><li><a href="solve.html" class="">Solve</a></li><li><a href="connect.html" class="active">Connect</a></li></ul></nav>
+<div class="page-body">
+
+<div class="connect-wrap">
+  <p class="section-label">Let's talk</p>
+  <h1 class="section-title">Connect with me</h1>
+  <p class="section-sub">Whether you want to collaborate, explore an opportunity, or just pick my brain over coffee — reach out.</p>
+
+  <div class="connect-grid">
+    <a class="connect-card" href="mailto:nvignesh20@gmail.com">
+      <div class="connect-icon">✉</div>
+      <h3>Send an email</h3>
+      <p>nvignesh20@gmail.com<br>I reply within 48 hours.</p>
+    </a>
+    <a class="connect-card" href="https://linkedin.com/in/YOUR-HANDLE" target="_blank">
+      <div class="connect-icon">in</div>
+      <h3>LinkedIn</h3>
+      <p>Connect, message, or endorse. Best place to follow my work.</p>
+    </a>
+    <a class="connect-card" href="https://cal.com" target="_blank">
+      <div class="connect-icon">📅</div>
+      <h3>Book a coffee chat</h3>
+      <p>30 minutes, no agenda needed. I enjoy these.</p>
+    </a>
+    <div class="connect-card" onclick="handleKudo(this)" style="cursor:pointer">
+      <div class="connect-icon" id="kudo-icon">👍</div>
+      <h3>Give a thumbs up</h3>
+      <p id="kudo-label">Appreciate the work? Let me know — it means a lot.</p>
+    </div>
+  </div>
+
+  <div class="connect-note">
+    <p><strong>Open to opportunities in Europe.</strong> I'm actively exploring VP-level and Global Digital Transformation leadership roles at multinationals. If you're hiring or know someone who is, I'd love to hear from you.</p>
+  </div>
+</div>
+<script>
+function handleKudo(el){
+  document.getElementById("kudo-icon").textContent="🎉";
+  document.getElementById("kudo-label").textContent="Thanks! That genuinely means a lot.";
+  el.style.borderColor="var(--amber)";
+  el.onclick=null;
+}
+</script>
+
+<footer><div class="footer-name"><strong>Vignesh Nagarajan</strong> · Engineering Leader</div><div class="footer-loc">Chennai, India · Open to Europe</div></footer>
+</div>
+</body>
+</html>
