@@ -1,1 +1,6 @@
 .vercel
+
+recovery-codes.txt
+*.txt
+.env
+.env.local
