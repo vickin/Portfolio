@@ -17,15 +17,23 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(204).end();
 
-  if (req.method === 'GET') {
-    const val = await redisCmd(`get/${KEY}`);
-    return res.status(200).json({ count: Number(val) || 0 });
-  }
+  try {
+    if (!BASE || !TOKEN) {
+      return res.status(500).json({ error: 'Missing env vars', hasBase: !!BASE, hasToken: !!TOKEN });
+    }
 
-  if (req.method === 'POST') {
-    const count = await redisCmd(`incr/${KEY}`);
-    return res.status(200).json({ count: Number(count) });
-  }
+    if (req.method === 'GET') {
+      const val = await redisCmd(`get/${KEY}`);
+      return res.status(200).json({ count: Number(val) || 0 });
+    }
 
-  return res.status(405).json({ error: 'Method not allowed' });
+    if (req.method === 'POST') {
+      const count = await redisCmd(`incr/${KEY}`);
+      return res.status(200).json({ count: Number(count) });
+    }
+
+    return res.status(405).json({ error: 'Method not allowed' });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || String(err) });
+  }
 };
