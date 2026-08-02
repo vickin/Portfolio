@@ -1,11 +1,8 @@
-const { Resend } = require('resend');
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 const RECIPIENT = 'nvignesh20@gmail.com';
 
 module.exports = async function handler(req, res) {
   // CORS – allow the portfolio origin only
-  res.setHeader('Access-Control-Allow-Origin', 'https://vigneshnagarajan.com');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -27,15 +24,23 @@ module.exports = async function handler(req, res) {
   const safeEmail   = email.trim().slice(0, 200);
 
   try {
-    await resend.emails.send({
-      from:    'Portfolio <onboarding@resend.dev>',
-      to:      RECIPIENT,
-      replyTo: safeEmail,
-      subject: 'New Problem Submission — vigneshnagarajan.com',
-      text:    `From: ${safeEmail}\n\n${safeProblem}`,
-      html:    `<p><strong>From:</strong> ${safeEmail}</p><hr><p>${safeProblem.replace(/\n/g, '<br>')}</p>`,
+    const r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from:     'Portfolio <onboarding@resend.dev>',
+        to:       [RECIPIENT],
+        reply_to: safeEmail,
+        subject:  'New Problem Submission \u2014 vigneshnagarajan.com',
+        text:     `From: ${safeEmail}\n\n${safeProblem}`,
+        html:     `<p><strong>From:</strong> ${safeEmail}</p><hr><p>${safeProblem.replace(/\n/g, '<br>')}</p>`,
+      }),
     });
-
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.message || r.status);
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('[contact] email send error:', err);
