@@ -3,5 +3,23 @@
   "version": "1.0.0",
   "private": true,
   "description": "Portfolio of Vignesh Nagarajan — Engineering Leader / Industry 4.0",
-  "dependencies": {}
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "autoprefixer": "^10.5.4",
+    "framer-motion": "^12.43.0",
+    "lucide-react": "^1.28.0",
+    "next": "^16.2.12",
+    "postcss": "^8.5.25",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3"
+  }
 }

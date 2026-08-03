@@ -4,3 +4,5 @@ recovery-codes.txt
 *.txt
 .env
 .env.local
+node_modules
+.next

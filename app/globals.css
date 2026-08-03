@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: #dbe4ee;
+  --accent: #0f6fff;
+  --accent-soft: #e7f0ff;
+  --navy: #0c1d3d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), "Segoe UI", sans-serif;
+}
+
+.grid-blueprint {
+  background-image:
+    linear-gradient(to right, rgba(15, 111, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 111, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.section-shell {
+  width: min(100%, 1200px);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+.reading-width {
+  width: min(100%, 780px);
+}
+
+.executive-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+.executive-card:hover {
+  transform: translateY(-2px);
+  border-color: #c6d5ea;
+}
+
+.hero-network-glow {
+  background: radial-gradient(circle at 30% 20%, rgba(15, 111, 255, 0.16), transparent 48%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
