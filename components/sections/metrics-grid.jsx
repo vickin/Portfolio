@@ -1,15 +1,20 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 function MetricValue({ value, suffix = "" }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const reduceMotion = useReducedMotion();
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     if (!isInView) return;
+    if (reduceMotion) {
+      setDisplay(value);
+      return;
+    }
 
     const duration = 900;
     const start = performance.now();
@@ -25,7 +30,7 @@ function MetricValue({ value, suffix = "" }) {
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [isInView, value]);
+  }, [isInView, reduceMotion, value]);
 
   return (
     <span ref={ref} className="tabular-nums">
@@ -36,6 +41,8 @@ function MetricValue({ value, suffix = "" }) {
 }
 
 export default function MetricsGrid() {
+  const reduceMotion = useReducedMotion();
+
   const metrics = useMemo(
     () => [
       { value: 10, suffix: "+", label: "Years in Industry" },
@@ -55,13 +62,13 @@ export default function MetricsGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.28 }}
           transition={{ duration: 0.45, delay: index * 0.07 }}
-          whileHover={{ y: -2 }}
-          className="executive-card p-5"
+          whileHover={reduceMotion ? undefined : { y: -2 }}
+          className="executive-card p-5 md:p-6"
         >
-          <p className="mb-2 text-4xl font-semibold leading-none text-[var(--accent)]">
+          <p className="mb-2 text-[2.65rem] font-semibold leading-none tracking-[-0.02em] text-[var(--accent)] md:text-5xl">
             <MetricValue value={metric.value} suffix={metric.suffix} />
           </p>
-          <p className="text-xs uppercase tracking-[0.14em] text-slate-600">{metric.label}</p>
+          <p className="text-[11px] uppercase tracking-[0.16em] text-slate-600">{metric.label}</p>
         </motion.article>
       ))}
     </div>

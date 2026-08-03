@@ -1,13 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const nodes = [
-  { id: "factory", x: 52, y: 210, label: "Factory" },
-  { id: "sensors", x: 174, y: 150, label: "Sensors" },
-  { id: "cloud", x: 292, y: 104, label: "Cloud" },
-  { id: "ai", x: 415, y: 146, label: "AI" },
-  { id: "insights", x: 530, y: 90, label: "Business" },
+  { id: "factory", x: 44, y: 196, label: "Factory" },
+  { id: "machines", x: 120, y: 156, label: "Machines" },
+  { id: "sensors", x: 196, y: 120, label: "Sensors" },
+  { id: "edge", x: 274, y: 98, label: "Edge" },
+  { id: "cloud", x: 354, y: 116, label: "Cloud" },
+  { id: "ai", x: 436, y: 144, label: "AI" },
+  { id: "insights", x: 522, y: 102, label: "Business Insights" },
 ];
 
 const links = [
@@ -15,25 +17,31 @@ const links = [
   [nodes[1], nodes[2]],
   [nodes[2], nodes[3]],
   [nodes[3], nodes[4]],
-  [nodes[1], nodes[3]],
+  [nodes[4], nodes[5]],
+  [nodes[5], nodes[6]],
+  [nodes[2], nodes[4]],
 ];
 
 export default function IndustrialNetwork() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <div className="executive-card hero-network-glow relative overflow-hidden p-4 md:p-6">
       <svg
-        viewBox="0 0 580 260"
+        viewBox="0 0 580 240"
         role="img"
         aria-label="Industrial network from factory sensors to cloud AI and business insights"
-        className="h-[240px] w-full"
+        className="h-[230px] w-full"
       >
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#0f6fff" stopOpacity="0.2" />
-            <stop offset="50%" stopColor="#0f6fff" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#0f6fff" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="#1f5ecf" stopOpacity="0.18" />
+            <stop offset="50%" stopColor="#1f5ecf" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#1f5ecf" stopOpacity="0.18" />
           </linearGradient>
         </defs>
+
+        <rect x="14" y="20" width="552" height="200" rx="14" fill="rgba(255,255,255,0.38)" stroke="rgba(31,94,207,0.08)" />
 
         {links.map(([from, to], index) => (
           <motion.line
@@ -43,11 +51,11 @@ export default function IndustrialNetwork() {
             x2={to.x}
             y2={to.y}
             stroke="url(#lineGradient)"
-            strokeWidth="1.5"
-            strokeDasharray="6 10"
-            initial={{ strokeDashoffset: 200 }}
-            animate={{ strokeDashoffset: 0 }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "linear", delay: index * 0.22 }}
+            strokeWidth="1.25"
+            strokeDasharray="5 12"
+            initial={{ strokeDashoffset: 180 }}
+            animate={{ strokeDashoffset: reduceMotion ? 180 : 0 }}
+            transition={{ duration: 3.4, repeat: reduceMotion ? 0 : Infinity, ease: "linear", delay: index * 0.18 }}
           />
         ))}
 
@@ -56,15 +64,15 @@ export default function IndustrialNetwork() {
             <motion.circle
               cx={node.x}
               cy={node.y}
-              r="9"
+              r="8"
               fill="#ffffff"
-              stroke="#0f6fff"
-              strokeWidth="1.5"
-              initial={{ opacity: 0.8, scale: 1 }}
-              animate={{ opacity: [0.8, 1, 0.8], scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+              stroke="#1f5ecf"
+              strokeWidth="1.4"
+              initial={{ opacity: 0.82, scale: 1 }}
+              animate={{ opacity: reduceMotion ? 0.9 : [0.82, 1, 0.82], scale: reduceMotion ? 1 : [1, 1.08, 1] }}
+              transition={{ duration: 2.6, repeat: reduceMotion ? 0 : Infinity, delay: index * 0.16 }}
             />
-            <text x={node.x + 14} y={node.y + 4} fill="#0f172a" fontSize="12" fontFamily="var(--font-display)">
+            <text x={node.x + 13} y={node.y + 4} fill="#10203e" fontSize="11" fontFamily="var(--font-display)">
               {node.label}
             </text>
           </g>

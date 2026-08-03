@@ -64,7 +64,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="connect" className="bg-white py-20">
+    <section id="connect" className="section-band-white py-24">
       <div className="section-shell grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -73,9 +73,9 @@ export default function ContactSection() {
           transition={{ duration: 0.55 }}
           className="executive-card p-6 md:p-8"
         >
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Bring me your hard problems</p>
-          <h2 className="mb-3 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">Describe the challenge</h2>
-          <p className="mb-6 max-w-[66ch] text-sm leading-7 text-slate-600">
+          <p className="section-kicker">Bring me your hard problems</p>
+          <h2 className="section-title max-w-[16ch] text-slate-900">Describe the challenge</h2>
+          <p className="mb-6 max-w-[66ch] text-sm leading-7 text-slate-600 md:text-[0.96rem]">
             Struggling with factory connectivity, OT/IT integration, or scaling IoT? Tell me what you are up against.
           </p>
           <form onSubmit={submitProblem} className="space-y-4">
@@ -104,7 +104,7 @@ export default function ContactSection() {
               </button>
             </div>
           </form>
-          <p className="mt-3 text-xs text-slate-500">No spam. Just a real conversation.</p>
+          <p className="mt-3 text-xs uppercase tracking-[0.11em] text-slate-500">No spam. Just a real conversation.</p>
           {status ? <p className="mt-3 text-sm text-slate-700">{status}</p> : null}
         </motion.div>
 

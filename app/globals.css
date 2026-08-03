@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f8fafc;
+  --bg: #f5f7fb;
   --surface: #ffffff;
-  --surface-alt: #f1f5f9;
+  --surface-alt: #eef3f8;
+  --surface-soft: #f8fafd;
   --text: #0f172a;
-  --muted: #475569;
-  --line: #dbe4ee;
-  --accent: #0f6fff;
-  --accent-soft: #e7f0ff;
-  --navy: #0c1d3d;
+  --muted: #516175;
+  --line: #d8e1ec;
+  --accent: #1f5ecf;
+  --accent-strong: #194eae;
+  --accent-soft: #eaf1ff;
+  --navy: #0b1b36;
+  --shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.03), 0 8px 24px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 1px 2px rgba(15, 23, 42, 0.04), 0 14px 36px rgba(15, 23, 42, 0.08);
 }
 
 html {
@@ -21,6 +25,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body), "Segoe UI", sans-serif;
+  line-height: 1.75;
 }
 
 h1,
@@ -32,35 +37,39 @@ h4 {
 
 .grid-blueprint {
   background-image:
-    linear-gradient(to right, rgba(15, 111, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 111, 255, 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to right, rgba(31, 94, 207, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 94, 207, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 .section-shell {
-  width: min(100%, 1200px);
+  width: min(100%, 1240px);
   margin-inline: auto;
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
 .reading-width {
-  width: min(100%, 780px);
+  width: min(100%, 800px);
 }
 
 .executive-card {
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--surface);
-  transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
+  box-shadow: var(--shadow-soft);
+  transition: transform 240ms ease, border-color 240ms ease, background-color 240ms ease, box-shadow 240ms ease;
 }
 
 .executive-card:hover {
   transform: translateY(-2px);
-  border-color: #c6d5ea;
+  border-color: #bdccde;
+  box-shadow: var(--shadow-hover);
 }
 
 .hero-network-glow {
-  background: radial-gradient(circle at 30% 20%, rgba(15, 111, 255, 0.16), transparent 48%);
+  background:
+    radial-gradient(circle at 24% 22%, rgba(31, 94, 207, 0.14), transparent 44%),
+    linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
 }
 
 .text-balance {
@@ -69,4 +78,66 @@ h4 {
 
 .text-pretty {
   text-wrap: pretty;
+}
+
+.section-kicker {
+  margin-bottom: 0.9rem;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+.section-title {
+  margin-bottom: 0.9rem;
+  font-size: clamp(1.95rem, 4vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #0c1628;
+}
+
+.section-body {
+  max-width: 72ch;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.section-band-light {
+  background: var(--surface-alt);
+}
+
+.section-band-white {
+  background: var(--surface);
+}
+
+.section-band-dark {
+  background:
+    radial-gradient(circle at 15% -10%, rgba(31, 94, 207, 0.16), transparent 35%),
+    linear-gradient(180deg, #0a1830 0%, #0b1b36 100%);
+}
+
+.section-band-dark .section-kicker {
+  color: #8fb8ff;
+}
+
+.section-band-dark .section-title {
+  color: #edf3ff;
+}
+
+.section-band-dark .section-body {
+  color: #b7c6df;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }
