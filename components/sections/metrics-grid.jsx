@@ -1,44 +1,7 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useEffect, useMemo, useRef, useState } from "react";
-
-function MetricValue({ value, suffix = "" }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-  const reduceMotion = useReducedMotion();
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    if (reduceMotion) {
-      setDisplay(value);
-      return;
-    }
-
-    const duration = 900;
-    const start = performance.now();
-    let frame = 0;
-
-    const tick = (time) => {
-      const progress = Math.min((time - start) / duration, 1);
-      setDisplay(Math.round(value * progress));
-      if (progress < 1) {
-        frame = requestAnimationFrame(tick);
-      }
-    };
-
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [isInView, reduceMotion, value]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {display}
-      {suffix}
-    </span>
-  );
-}
+import { motion, useReducedMotion } from "framer-motion";
+import { useMemo } from "react";
 
 export default function MetricsGrid() {
   const reduceMotion = useReducedMotion();
@@ -66,7 +29,10 @@ export default function MetricsGrid() {
           className="executive-card p-5 md:p-6"
         >
           <p className="mb-2 text-[2.65rem] font-semibold leading-none tracking-[-0.02em] text-[var(--accent)] md:text-5xl">
-            <MetricValue value={metric.value} suffix={metric.suffix} />
+            <span className="tabular-nums">
+              {metric.value}
+              {metric.suffix}
+            </span>
           </p>
           <p className="text-[11px] uppercase tracking-[0.16em] text-slate-600">{metric.label}</p>
         </motion.article>
