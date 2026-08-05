@@ -270,7 +270,7 @@ export default function Home() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title} delay={index * 0.03}>
-                  <article className="executive-card border-[#1d3e6f] bg-[#10254a] p-5 md:p-6 hover:border-[#325f9f] hover:bg-[#132c56]">
+                  <article className="executive-card !border-[#1d3e6f] !bg-[#10254a] p-5 md:p-6 hover:!border-[#325f9f] hover:!bg-[#132c56]">
                     <Icon size={18} className="mb-3 text-[#8fb8ff]" aria-hidden="true" />
                     <h3 className="mb-2 text-base font-semibold text-[#edf3ff]">{item.title}</h3>
                     <p className="text-sm leading-7 text-[#b7c6df]">{item.description}</p>
