@@ -8,10 +8,10 @@ export default function MetricsGrid() {
 
   const metrics = useMemo(
     () => [
-      { value: 10, suffix: "+", label: "Years in Industry" },
-      { value: 100, suffix: "+", label: "Sites Transformed" },
-      { value: 5, suffix: "", label: "Countries" },
-      { value: 3, suffix: "", label: "Continents of Delivery" },
+      { prefix: "$", value: "2.3", suffix: "M", label: "Tracked EBIT Impact" },
+      { value: 100, suffix: "+", label: "Manufacturing Divisions" },
+      { value: 19, suffix: "", label: "Sites Scaled in 9 Months" },
+      { value: 10, suffix: "+", label: "Years in Industry 4.0" },
     ],
     []
   );
@@ -30,6 +30,7 @@ export default function MetricsGrid() {
         >
           <p className="mb-2 text-[2.65rem] font-semibold leading-none tracking-[-0.02em] text-[var(--accent)] md:text-5xl">
             <span className="tabular-nums">
+              {metric.prefix}
               {metric.value}
               {metric.suffix}
             </span>

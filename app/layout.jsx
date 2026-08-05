@@ -14,17 +14,17 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Vignesh Nagarajan — Engineering Leader, Industry 4.0 & IIoT",
+  title: "Vignesh Nagarajan — Smart Factory & Digital Manufacturing Leader",
   description:
-    "Engineering leader with 10+ years building intelligent manufacturing systems across Europe, APAC, and the Americas. Currently at Magna International.",
+    "Digital transformation leader with 10+ years turning shop-floor pain points into funded Industry 4.0 and AI programmes — $2.3M+ tracked EBIT impact across 100+ manufacturing divisions in Europe, North America, and China. Currently at Magna International.",
   metadataBase: new URL("https://vigneshnagarajan.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Vignesh Nagarajan — Engineering Leader, Industry 4.0 & IIoT",
+    title: "Vignesh Nagarajan — Smart Factory & Digital Manufacturing Leader",
     description:
-      "Engineering leader with 10+ years building intelligent manufacturing systems across Europe, APAC, and the Americas. Currently at Magna International.",
+      "Digital transformation leader with 10+ years turning shop-floor pain points into funded Industry 4.0 and AI programmes — $2.3M+ tracked EBIT impact across 100+ manufacturing divisions in Europe, North America, and China.",
     url: "https://vigneshnagarajan.com",
     images: ["/profile.png"],
     type: "website",

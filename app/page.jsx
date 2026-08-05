@@ -6,10 +6,10 @@ import {
   Factory,
   Globe2,
   Network,
-  ShieldCheck,
   Sparkles,
   Target,
   TrendingUp,
+  Users,
   Workflow,
 } from "lucide-react";
 import Image from "next/image";
@@ -22,52 +22,48 @@ const timeline = [
   {
     logo: "MI",
     company: "Magna International",
-    years: "2024-Now",
-    role: "IoT & Smart Factory Manager",
-    impact: "Scaling real-time frontline dashboards across APAC divisions.",
-    tags: ["IIoT", "Edge", "Plant Ops"],
+    years: "2024-Present",
+    role: "IoT & Smart Factory Solutions Manager",
+    impact:
+      "Steering 3 AI/IoT use cases to $2.3M in tracked EBIT impact within a $19.7M programme independently validated by McKinsey; grew the India CoE from 3 to 17 people.",
+    tags: ["Industrial AI", "IIoT", "CoE Leadership"],
     current: true,
   },
   {
     logo: "MI",
     company: "Magna International",
     years: "2023-24",
-    role: "Regional Industry 4.0 Lead",
-    impact: "Led cross-plant digital transformation programs in Europe.",
-    tags: ["Industry 4.0", "MES", "Program Lead"],
+    role: "Regional Industry 4.0 Lead, Europe",
+    impact:
+      "Scaled IoT to 85% of European plants in 9 months across 19 Body & Chassis sites, standardising factory data models on MQTT and Unified Namespace.",
+    tags: ["Industry 4.0", "MQTT/UNS", "Programme Lead"],
   },
   {
     logo: "AZ",
     company: "Amazon",
     years: "2021-23",
     role: "Systems Development Engineer II",
-    impact: "Delivered scalable systems for operational reliability.",
-    tags: ["Systems", "Automation", "Cloud"],
+    impact:
+      "Took robotics and automation from prototype to production across 5 European fulfilment sites - 40% cost savings, 20% faster deployment.",
+    tags: ["Robotics", "Automation", "Systems"],
   },
   {
-    logo: "WP",
-    company: "Whirlpool Corp",
-    years: "2019-21",
-    role: "Industry 4.0 Lead",
-    impact: "Accelerated connected factory outcomes across Europe.",
-    tags: ["Manufacturing", "Analytics", "Transformation"],
+    logo: "AZ",
+    company: "Amazon",
+    years: "2020-21",
+    role: "Automation Engineer / SME Control Systems",
+    impact:
+      "Delivered automation upgrades generating €800K+ in infrastructure savings while restoring peak-season throughput.",
+    tags: ["Controls", "SCADA", "Automation"],
   },
   {
-    logo: "AS",
-    company: "Autoware Srl",
-    years: "2017-19",
-    role: "MES Engineer",
-    impact: "Implemented MES improvements in automotive environments.",
-    tags: ["MES", "OT", "Execution"],
-    muted: true,
-  },
-  {
-    logo: "PC",
-    company: "P&C / Cannon",
-    years: "2013-17",
-    role: "Automation Engineer",
-    impact: "Built foundational automation systems across Italy and India.",
-    tags: ["PLC", "SCADA", "Automation"],
+    logo: "EC",
+    company: "Early Career, Italy",
+    years: "2016-19",
+    role: "MES, Automation & Controls Engineer",
+    impact:
+      "Built ISA-95 Level 0-4 foundations across Cannon Automata, Whirlpool, P&C Automation, and Autoware - PLC commissioning, SCADA, and MES rollouts in automotive and appliance manufacturing.",
+    tags: ["MES", "SCADA", "PLC"],
     muted: true,
   },
 ];
@@ -76,45 +72,45 @@ const capabilities = [
   {
     icon: Factory,
     title: "Digital Manufacturing Strategy",
-    description: "Roadmaps linking plant objectives to measurable business outcomes.",
+    description: "Turning plant-level pain points into funded, prioritised Industry 4.0 and AI roadmaps.",
   },
   {
     icon: Network,
     title: "OT/IT Integration",
-    description: "Operational data pipelines from machines to cloud platforms.",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud & Platform Architecture",
-    description: "Scalable industrial platforms across regions and business units.",
+    description: "Standardising factory data models on MQTT, Unified Namespace, and ISA-95 for consistent OT/IT data flow.",
   },
   {
     icon: Cpu,
-    title: "Applied AI for Operations",
-    description: "Practical AI use cases that improve reliability and throughput.",
+    title: "Applied Industrial AI",
+    description: "Condition-based monitoring, real-time SPC, and predictive maintenance use cases proven on the shop floor.",
   },
   {
-    icon: ShieldCheck,
-    title: "Industrial Cybersecurity",
-    description: "Secure-by-design implementation for modern connected factories.",
+    icon: Cloud,
+    title: "Data & Visibility Platforms",
+    description: "Grafana and Power BI observability giving plant teams real-time, self-serve production visibility.",
+  },
+  {
+    icon: Users,
+    title: "Centre of Excellence Leadership",
+    description: "Built and scaled a delivery organisation from 3 to 17 across engineers, analysts, and partners.",
   },
   {
     icon: Workflow,
-    title: "Transformation Leadership",
-    description: "Cross-functional delivery across engineering, ops, and leadership teams.",
+    title: "Executive Programme Delivery",
+    description: "Engaging Directors and VPs to prioritise, fund, and scale programmes across 100+ divisions.",
   },
 ];
 
 const nowItems = [
   {
-    label: "Active · Magna APAC",
-    title: "Scaling IoT to 200+ divisions",
-    text: "Deploying real-time frontline dashboards to every Magna APAC plant by end of 2025.",
+    label: "Active · Magna Global",
+    title: "Scaling to 200+ divisions",
+    text: "Deploying real-time production observability across Magna's global manufacturing divisions, scaling toward 200+ by end of 2026.",
   },
   {
     label: "Building · India CoE",
     title: "Smart Factory Centre of Excellence",
-    text: "Leading an 8-person agile team of data scientists, DevOps and full-stack engineers in Bengaluru.",
+    text: "Leading a 17-person Centre of Excellence - engineers, analysts, and partners - grown from 3 in two years.",
   },
   {
     label: "Learning · Certifications",
@@ -130,16 +126,16 @@ const nowItems = [
 
 const projects = [
   {
-    title: "Global Plant Visibility Program",
-    teaser: "Unified manufacturing telemetry and KPI visibility across multi-country operations.",
+    title: "Global Plant Visibility Programme",
+    teaser: "Grafana observability connecting machine-level data to plant and executive decisions across global factories.",
   },
   {
     title: "Smart Factory Rollout Playbook",
-    teaser: "Repeatable operating model for scaling digital initiatives from pilot to enterprise.",
+    teaser: "The MQTT/Unified Namespace data-standardisation model that scaled IoT to 85% of European plants in 9 months.",
   },
   {
-    title: "Industrial Data to Business Insight",
-    teaser: "Connecting edge signals to executive decisions with cloud-native reporting layers.",
+    title: "Industrial AI to EBIT Impact",
+    teaser: "Condition-based monitoring, SPC, and invoice automation use cases behind $2.3M in McKinsey-validated EBIT impact.",
   },
 ];
 
@@ -168,9 +164,9 @@ export default function Home() {
               <h1 className="text-balance mb-5 text-5xl font-semibold leading-[0.9] tracking-[-0.03em] text-slate-950 md:text-[4.8rem]">
                 Vignesh Nagarajan
               </h1>
-              <p className="mb-4 text-xs uppercase tracking-[0.17em] text-slate-500">Engineering Leader · Industry 4.0 · IoT</p>
+              <p className="mb-4 text-xs uppercase tracking-[0.17em] text-slate-500">Smart Factory & Digital Manufacturing Leader · Industry 4.0 · Industrial AI</p>
               <p className="text-pretty mb-8 max-w-[68ch] text-[1.03rem] leading-8 text-slate-600">
-                I bridge the gap between shop floor and boardroom - turning factory complexity into intelligent, scalable systems across Europe and APAC.
+                I turn shop-floor pain points into funded, scalable Industry 4.0 and AI programmes - delivering $2.3M+ in tracked EBIT impact across 100+ manufacturing divisions in Europe, North America, and China.
               </p>
               <div className="mb-8 flex flex-wrap gap-3">
                 <a href="#connect" className="rounded-xl border border-transparent bg-[var(--accent)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[var(--accent-strong)]">
@@ -209,10 +205,10 @@ export default function Home() {
           <Reveal className="reading-width">
             <p className="section-kicker">Problem statement</p>
             <h2 className="section-title">
-              Manufacturing leaders are expected to deliver digital outcomes at enterprise speed.
+              Digital transformation stalls at the gap between the shop floor and the boardroom.
             </h2>
             <p className="section-body text-pretty">
-              The challenge is rarely technology in isolation. It is the execution gap between factory operations, software systems, cloud platforms, AI capability, and board-level business priorities. My work sits exactly in that gap.
+              The barrier is rarely the technology itself. It is translating plant-level pain points - across decentralised, multi-process manufacturing environments - into funded, scalable programmes that both operators and executives trust. That translation is where I operate, adapting each solution to a facility's specific operational, data, and organisational realities rather than forcing a uniform approach.
             </p>
           </Reveal>
         </div>
@@ -267,7 +263,7 @@ export default function Home() {
         <div className="section-shell">
           <Reveal className="mb-8 reading-width">
             <p className="section-kicker">Capabilities</p>
-            <h2 className="section-title">Where manufacturing, software, cloud, AI and strategy meet</h2>
+            <h2 className="section-title">Where shop-floor operations, data, AI, and executive strategy meet</h2>
           </Reveal>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {capabilities.map((item, index) => {
@@ -336,7 +332,7 @@ export default function Home() {
       <footer className="bg-[var(--bg)] py-8">
         <div className="section-shell flex flex-col items-center justify-between gap-2 border-t border-[var(--line)] pt-6 text-center text-sm text-slate-600 md:flex-row md:text-left">
           <p>
-            <strong className="font-semibold text-slate-900">Vignesh Nagarajan</strong> · Engineering Leader
+            <strong className="font-semibold text-slate-900">Vignesh Nagarajan</strong> · Smart Factory & Digital Manufacturing Leader
           </p>
           <p>Chennai, India · Open to Europe</p>
         </div>
