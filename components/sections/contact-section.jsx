@@ -123,7 +123,7 @@ export default function ContactSection() {
             </div>
           </a>
 
-          <a href="https://linkedin.com/in/vignesh-nagarajan" target="_blank" rel="noreferrer" className="executive-card flex items-start gap-3 p-4">
+          <a href="https://www.linkedin.com/in/nvignesh20" target="_blank" rel="noreferrer" className="executive-card flex items-start gap-3 p-4">
             <Link2 size={18} className="mt-0.5 text-[var(--accent)]" aria-hidden="true" />
             <div>
               <h3 className="text-sm font-semibold text-slate-900">LinkedIn</h3>
