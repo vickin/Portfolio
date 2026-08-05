@@ -11,14 +11,45 @@ export default function ContactSection() {
   const [sending, setSending] = useState(false);
   const [kudoCount, setKudoCount] = useState(0);
   const [kudoDone, setKudoDone] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
-    fetch("/api/thumbsup")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
+    const syncOwnerMode = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const ownerToken = params.get("owner");
+
+      if (ownerToken) {
+        try {
+          const response = await fetch("/api/owner-mode", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: ownerToken }),
+          });
+
+          if (response.ok) {
+            params.delete("owner");
+            const nextQuery = params.toString();
+            const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
+            window.history.replaceState({}, "", nextUrl);
+          }
+        } catch {
+        }
+      }
+
+      try {
+        const response = await fetch("/api/thumbsup");
+        const data = response.ok ? await response.json() : null;
+
         if (data && data.count > 0) setKudoCount(data.count);
-      })
-      .catch(() => {});
+        if (data && data.isOwner) {
+          setIsOwner(true);
+          setKudoDone(true);
+        }
+      } catch {
+      }
+    };
+
+    syncOwnerMode();
   }, []);
 
   const submitProblem = async (e) => {
@@ -52,11 +83,12 @@ export default function ContactSection() {
   };
 
   const handleKudo = async () => {
-    if (kudoDone) return;
+    if (kudoDone || isOwner) return;
     try {
       const response = await fetch("/api/thumbsup", { method: "POST" });
       const data = await response.json();
       setKudoCount(data.count || 0);
+      if (data.isOwner) setIsOwner(true);
       setKudoDone(true);
     } catch {
       setKudoDone(true);
@@ -142,15 +174,18 @@ export default function ContactSection() {
           <button
             type="button"
             onClick={handleKudo}
-            className="executive-card w-full cursor-pointer text-left p-4"
+            className="executive-card w-full cursor-pointer text-left p-4 disabled:cursor-not-allowed disabled:opacity-70"
             aria-label="Give a thumbs up"
+            disabled={isOwner}
           >
             <div className="flex items-start gap-3">
               <ThumbsUp size={18} className="mt-0.5 text-[var(--accent)]" aria-hidden="true" />
               <div>
                 <h3 className="text-sm font-semibold text-slate-900">Give a thumbs up</h3>
                 <p className="text-sm text-slate-600">
-                  {kudoCount > 0
+                  {isOwner
+                    ? "Owner mode is active on this browser. Your likes are excluded from the count."
+                    : kudoCount > 0
                     ? `${kudoCount} ${kudoCount === 1 ? "person appreciates" : "people appreciate"} this.`
                     : "Appreciate the work? Let me know."}
                 </p>
