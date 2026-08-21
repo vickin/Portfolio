@@ -21,6 +21,11 @@ module.exports = async function handler(req, res) {
   const safeProblem = problem.trim().slice(0, 2000);
   const safeEmail   = email.trim().slice(0, 200);
 
+  if (!process.env.WEB3FORMS_ACCESS_KEY) {
+    console.error('[contact] WEB3FORMS_ACCESS_KEY is not set');
+    return res.status(500).json({ error: 'Server misconfiguration: missing access key' });
+  }
+
   try {
     const r = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -34,10 +39,13 @@ module.exports = async function handler(req, res) {
       }),
     });
     const data = await r.json();
-    if (!r.ok || !data.success) throw new Error(data.message || r.status);
+    if (!r.ok || !data.success) {
+      console.error('[contact] Web3Forms error:', JSON.stringify(data));
+      return res.status(500).json({ error: data.message || 'Web3Forms rejected the request' });
+    }
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('[contact] email send error:', err);
-    return res.status(500).json({ error: 'Failed to send email' });
+    return res.status(500).json({ error: err.message || 'Failed to send email' });
   }
 };

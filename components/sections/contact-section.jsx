@@ -73,7 +73,7 @@ export default function ContactSection() {
         setProblem("");
         setEmail("");
       } else {
-        setStatus("Something went wrong. Please email nvignesh20@gmail.com directly.");
+        setStatus(data.error || "Something went wrong. Please email nvignesh20@gmail.com directly.");
       }
     } catch {
       setStatus("Something went wrong. Please email nvignesh20@gmail.com directly.");
