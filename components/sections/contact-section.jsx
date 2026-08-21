@@ -62,10 +62,16 @@ export default function ContactSection() {
     setSending(true);
     setStatus("");
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ problem, email }),
+        body: JSON.stringify({
+          access_key: "801f4608-1050-4d3a-9498-ac7b3b8a7b53",
+          subject: "New Problem Submission \u2014 vigneshnagarajan.com",
+          from_name: email.trim(),
+          email: email.trim(),
+          message: problem.trim(),
+        }),
       });
       const data = await response.json();
       if (data.success) {
@@ -73,7 +79,7 @@ export default function ContactSection() {
         setProblem("");
         setEmail("");
       } else {
-        setStatus(data.error || "Something went wrong. Please email nvignesh20@gmail.com directly.");
+        setStatus("Something went wrong. Please email nvignesh20@gmail.com directly.");
       }
     } catch {
       setStatus("Something went wrong. Please email nvignesh20@gmail.com directly.");
