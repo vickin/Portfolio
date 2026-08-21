@@ -1,5 +1,3 @@
-const RECIPIENT = 'nvignesh20@gmail.com';
-
 module.exports = async function handler(req, res) {
   // CORS – allow the portfolio origin only
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -24,23 +22,19 @@ module.exports = async function handler(req, res) {
   const safeEmail   = email.trim().slice(0, 200);
 
   try {
-    const r = await fetch('https://api.resend.com/emails', {
+    const r = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from:     'Portfolio <onboarding@resend.dev>',
-        to:       [RECIPIENT],
-        reply_to: safeEmail,
-        subject:  'New Problem Submission \u2014 vigneshnagarajan.com',
-        text:     `From: ${safeEmail}\n\n${safeProblem}`,
-        html:     `<p><strong>From:</strong> ${safeEmail}</p><hr><p>${safeProblem.replace(/\n/g, '<br>')}</p>`,
+        access_key: process.env.WEB3FORMS_ACCESS_KEY,
+        subject:    'New Problem Submission \u2014 vigneshnagarajan.com',
+        from_name:  safeEmail,
+        email:      safeEmail,
+        message:    safeProblem,
       }),
     });
     const data = await r.json();
-    if (!r.ok) throw new Error(data.message || r.status);
+    if (!r.ok || !data.success) throw new Error(data.message || r.status);
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('[contact] email send error:', err);
